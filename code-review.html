@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS 499 Code Review Transcript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+
+        header {
+            background-color: #4b0082;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            border-left: 5px solid #4b0082;
+        }
+
+        h1, h2 {
+            color: #b39ddb;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4b0082;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #6a0dad;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Mikaela Spence - CS499 Capstone
+    </header>
+
+    <div class="container">
+        <h1>CS 499 Code Review Transcript</h1>
+        
+        <p>Hello, my name is Mikaela Spence, and this is my Computer Science 499 Capstone Course Code Review for my project. The artifact I chose will be used for all three requirements in the course. The artifact is from CS 360 and is the assignment called EventTrackApp, where events are stored and displayed for a user. In this walkthrough, I will examine the existing code, analyze its strengths and weaknesses, and explain my planned enhancements across three key areas: software design and engineering, algorithms and data structures, and databases. The goal of these enhancements is to demonstrate my growth in the Computer Science program by improving efficiency, structure, and scalability.</p>
+
+        <h2>Existing Code Overview</h2>
+        <p>The EventTrackApp is an Android application that allows users to register, log in, and manage events. It currently stores user credentials and event data in an SQLite database and provides a user interface for event management.</p>
+        
+        <p>The login functionality verifies user credentials stored in SQLite by calling the check user function. If valid, the user proceeds to the event display screen in the event display activity. The registration process adds a new user entry to the database by calling the add user function in the database helper file. The load event data function retrieves all stored events and displays them in a grid view. Events are retrieved using the get all events function in the database helper file. The database helper class manages database interactions, including storing and retrieving user credentials and event data.</p>
+
+        <h2>Software Design and Engineering - Issues</h2>
+        <p>While the app is functional, there are several structural weaknesses that need improvement.</p>
+        
+        <p>Currently, there is tight coupling between user interface components and the database. Instead of a dedicated controller class, the user interface directly interacts with the database helper. Additionally, there is no clear separation of concerns, as business logic for event updates and deletions is embedded within the user interface instead of being handled separately. There are also instances of unreachable code and test stubs in the database helper file, where unused methods or old test routines may remain. Furthermore, the get all events function loads all events at once instead of fetching only the required data, leading to potential performance issues.</p>
+
+        <h2>Software Design and Engineering - Solution</h2>
+        <p>To improve maintainability and scalability, I will refactor the code to follow the Model-View-Controller pattern.</p>
+
+        <p>The plan involves restructuring the project with three main components. The model will consist of the database helper file, which will continue handling database interactions. The view will include activities such as the main activity and event display activity, which will handle user interface operations. The controller will be a new event controller file that will process user actions and mediate communication between the user interface and the database. By implementing this architecture, the code will become cleaner, modular, and more maintainable. The refactoring will also make debugging and testing more efficient while ensuring a clear separation between logic and the user interface.</p>
+
+        <h2>Algorithms and Data Structures - Issues</h2>
+        <p>Currently, event retrieval is inefficient due to the use of an array list, which results in a search time of order n when looking for a specific event. Additionally, there is no search or filtering functionality.</p>
+
+        <p>Retrieving all events requires iterating over the entire list, making searches slow. There is no built-in way for users to find events by name or filter events by date, which limits usability. Additionally, some loops within the code could be optimized for better performance. Another concern is the presence of magic numbers, where hardcoded values should be replaced with named constants for better readability and maintainability.</p>
+
+        <h2>Algorithms and Data Structures - Solution</h2>
+        <p>To improve efficiency, I will implement a hash map to store events, allowing constant time lookups, and introduce search and filtering features.</p>
+
+        <h2>Database Issues and Improvements</h2>
+        <p>The application currently relies solely on SQLite, which presents limitations in terms of data persistence and accessibility. Additionally, there are areas in need of improvement regarding indexing, error handling, and memory management.</p>
+
+        <p>One of the key issues is local storage dependency—since the application does not have cloud backup, users risk losing data if the app is removed or the device is reset. Additionally, queries could be slow due to the absence of indexed columns, making database searches less efficient. The app also lacks robust error handling mechanisms, which could lead to unhandled database failures. Lastly, memory allocation issues arise due to improper database connection handling, where connections may not be closed after use.</p>
+
+        <h2>Database Solution</h2>
+        <p>To improve reliability and scalability, I will integrate Firebase Firestore while maintaining SQLite as a local cache.</p>
+
+        <p>This hybrid approach ensures that SQLite remains the primary storage for fast local access, while Firebase Firestore serves as a cloud backup solution. The application will implement automatic syncing, so any events added locally will also be backed up to Firebase. Additional improvements will include better error handling, where try-catch blocks will be introduced to gracefully manage database failures. These enhancements will make the application more resilient to data loss and improve overall performance.</p>
+
+        <h2>Conclusion</h2>
+        <p>To summarize, my planned enhancements improve the structure, efficiency, and reliability of EventTrackApp by applying software engineering principles, optimizing algorithms, and integrating cloud storage.</p>
+
+        <p>Thank you for watching my CS 499 Code Review.</p>
+    </div>
+
+    <a class="back-link" href="index.html">🔙 Back to Home</a>
+</body>
+</html>
