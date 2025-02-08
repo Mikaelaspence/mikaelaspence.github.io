@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milestone Three - Data Structures and Algorithms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ddd;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header {
+            background-color: #4b0082;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            border-left: 5px solid #4b0082;
+        }
+
+        h1, h2 {
+            color: #b39ddb;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4b0082;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #6a0dad;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Mikaela Spence - CS499 Capstone
+    </header>
+
+    <div class="container">
+        <h1>Milestone Three Narrative: Data Structures and Algorithms</h1>
+        
+        <p>The artifact chosen for this milestone was from the CS course 360. The artifact is an Android app that manages events and was called EventTrackerApp. I selected this item because I saw there was much room for improvement on this project and wanted to implement some useful changes that would show my development in computer coding techniques since the completion of that course. The original artifact was created on August 25th, 2024.</p>
+
+        <p>This artifact was included in my portfolio because I saw room for several improvements. For the databases and algorithm enhancement, I chose to upgrade my search features. Initially, I was using an array list, with a search speed of order n, and changed it to a hash map with a search speed of order one, making it much faster. I also added new methods for searching by date ranges and by name, which were not previously in my app but I thought added something useful. These enhancements increase functionality and efficiency. This creates a more scalable and optimized system. There is a trade-off between using a hash map over an array list, choosing faster lookup times over memory usage in this case. My enhancement displays defensive programming, with additional user input validation that was not in the initial artifact. Secondly, code optimization by reducing inefficient loops and replacing hard-coded values with named constants. And most clearly, initializing the hash search function over the array. Since database performance is very important, this aligns with real-world software development practices.</p>
+
+        <p>Concerning course outcomes, this aligns with the third outcome, which is to solve a problem using algorithmic principles and appropriate data structures. A hash map for faster retrieval and additional search features improves efficiency in data structures and algorithms. For outcome four, using well-founded computing techniques to implement solutions that deliver value and accomplish industry-specific goals in software engineering, design, and database management.</p>
+
+        <p>I believe this enhancement reflects my proposed enhancement plans from my proposal. I do not need to update the plan currently, at least until I have feedback from my professor. I was able to review efficiency in searches and enhance my artifact to be more efficient, scalable, and usable by customers.</p>
+
+        <p>Concerning challenges, I had a few this time around. I had to find all of the places that needed to change when using a hash map instead of my previous list. Multiple methods needed to be changed throughout. I also added the different search features for searching by date ranges and keyword, which was all new. I had an issue that took a while to figure out, as I accidentally missed a piece while updating that kept looking for the old database. When no events were found, it would just go back to the login screen. I would get the notification I put in that my login was successful, but it would still go back to the main screen. Initially, I thought this was an authentication issue, which is why I added the "Login successful" text. I needed to add a method to display a message that there were no events to display if there were no events, instead of failing to load and returning to the login screen.</p>
+    </div>
+
+    <a class="back-link" href="index.html">🔙 Back to Home</a>
+</body>
+</html>
