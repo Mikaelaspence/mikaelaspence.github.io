@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milestone Four - Databases</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ddd;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header {
+            background-color: #4b0082;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            border-left: 5px solid #4b0082;
+        }
+
+        h1, h2 {
+            color: #b39ddb;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4b0082;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #6a0dad;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Mikaela Spence - CS499 Capstone
+    </header>
+
+    <div class="container">
+        <h1>Milestone Four Narrative: Databases</h1>
+        
+        <p>The artifact chosen for this milestone was from the CS course 360. The artifact is an Android app that manages events and was called EventTrackerApp. I selected this item because I saw there was much room for improvement on this project and wanted to implement some useful changes that would show my development in computer coding techniques since the completion of that course. The original artifact was created on August 25th, 2024.</p>
+
+        <p>This artifact was included in my portfolio because I saw room for several improvements. For the databases component, I wanted to showcase adding an online database that syncs with my SQLite database, namely Firestore. This prevents data from being lost if an app is uninstalled or crashes, as the information is backed up on a cloud system. Integration of this type is important so information is not only stored locally, but can be accessed across platforms and devices. There were many steps involved in this process, and it was the most complicated of the three enhancements done for this course.</p>
+
+        <p>To start, I needed to create a Firebase project, which I called EventTrackApp and registered the app using com.example.eventtrackapp as the package name. I needed to download the json file from the Firebase console and add it in my app/ directory of my Android project. Then I needed to update my plugins and dependencies at both the root level and app level for my build.gradle file. Here is where I came into my first problem, discussed below. Next, I needed to update my DatabaseHelper.java to incorporate and test these changes to my database. To do this I added a Firebase Firestore instance and initialized it in the constructor. Then I implemented Firestore sync methods to sync data with SQLite. I updated my add, delete, etc. methods to store updates in both SQLite and Firestore. I also needed to modify EventController.java to ensure everything ended up syncing with Firestore, triggering it after each CRUD operation. When I went to see if everything worked by checking the Firestore logs, I found my second problem, discussed below. Once Firestore was working, I checked adding, deleting, updating, and searching events, then checked this against the Firestore console, and everything worked as intended.</p>
+
+        <p>I believe this enhancement reflects my proposed enhancement plans from my initial plan. I do not need to update the plan currently, at least until I have feedback from my professor. I believe this enhancement meets several course outcomes, as discussed below.</p>
+
+        <p>In working on this project, I was able to incorporate a NoSQL database into my application in a cloud-based manner. This means the data is backed up and accessible across devices, syncs in real-time, and is much more scalable than SQLite, which is limited to the device’s storage capacity. Data is not lost if the app crashes or is uninstalled, with automatic backups handled by Firebase. Firebase offers a flexible structure because of its NoSQL schema flexibility. This meets the course outcome of using well-founded and innovative techniques, skills, and tools in computing practices, offering solutions that deliver value and accomplish industry-specific goals. Using both databases allows for scalability, performance enhancement, and reliability in a way that only using one would not.</p>
+
+        <p>This work also meets the course outcome of developing a security-based mindset, ensuring enhanced privacy and security of data and resources. Firebase also offers improved security, as it has Google security rules and user authentication (I am currently running it in test mode, but this is a feature).</p>
+
+        <p>One problem I had was with updating my plugins. I was confused at first about the difference between the root level and app level build.gradle files. When I tried to sync my Gradle files in my Android Studio, I received an error. A bit of research and I realized I had accidentally put both lines of code from Firebase into the same file and had a duplicate plugin error. Once I fixed that, I was able to sync the files. The second problem I had was getting “Permission Denied” errors in my Firestore logs. I did not realize I needed to go in and create a database in the Firestore console, actually create the database, and activate it. (I did so in test mode). Then I needed to enable the Firestore API in the Google Cloud console.</p>
+    </div>
+
+    <a class="back-link" href="index.html">🔙 Back to Home</a>
+</body>
+</html>
